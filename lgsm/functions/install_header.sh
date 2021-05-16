@@ -12,11 +12,6 @@ fn_print_ascii_logo
 fn_sleep_time
 echo -e "================================="
 echo -e "${lightyellow}Linux${default}GSM_"
-echo -e "by Daniel Gibbs"
-echo -e "${lightblue}Version:${default} ${version}"
-echo -e "${lightblue}Game:${default} ${gamename}"
-echo -e "${lightblue}Website:${default} https://linuxgsm.com"
-echo -e "${lightblue}Contributors:${default} https://linuxgsm.com/contrib"
-echo -e "${lightblue}Sponsor:${default} https://linuxgsm.com/sponsor"
+echo -e "Modified by Strubel; Made by Daniel Gibbs"
 echo -e "================================="
 fn_sleep_time
