@@ -248,36 +248,25 @@ fn_fetch_trap(){
 
 fn_fetch_file(){
 	remote_fileurl="${1}"
-	remote_fileurl_backup="${2}"
-	remote_fileurl_name="${3}"
-	remote_fileurl_backup_name="${4}"
-	local_filedir="${5}"
-	local_filename="${6}"
-	chmodx="${7:-0}"
-	run="${8:-0}"
-	forcedl="${9:-0}"
-	hash="${10:-0}"
+	remote_fileurl_name="${2}"
+	local_filedir="${3}"
+	local_filename="${4}"
+	chmodx="${5:-0}"
+	run="${6:-0}"
+	forcedl="${7-0}"
+	md5="${8:-0}"
+echo "VAR SET"
 
 	# Download file if missing or download forced.
 	if [ ! -f "${local_filedir}/${local_filename}" ]||[ "${forcedl}" == "forcedl" ]; then
 		# If backup fileurl exists include it.
-		if [ -n "${remote_fileurl_backup}" ]; then
-			# counter set to 0 to allow second try
-			counter=0
-			remote_fileurls_array=( remote_fileurl remote_fileurl_backup )
-		else
-			# counter set to 1 to not allow second try
 			counter=1
 			remote_fileurls_array=( remote_fileurl )
-		fi
+
 		for remote_fileurl_array in "${remote_fileurls_array[@]}"; do
-			if [ "${remote_fileurl_array}" == "remote_fileurl" ]; then
-				fileurl="${remote_fileurl}"
-				fileurl_name="${remote_fileurl_name}"
-			elif [ "${remote_fileurl_array}" == "remote_fileurl_backup" ]; then
-				fileurl="${remote_fileurl_backup}"
-				fileurl_name="${remote_fileurl_backup_name}"
-			fi
+			fileurl="${remote_fileurl}"
+			fileurl_name="${remote_fileurl_name}"
+			
 			counter=$((counter+1))
 			if [ ! -d "${local_filedir}" ]; then
 				mkdir -p "${local_filedir}"
@@ -373,9 +362,8 @@ fn_fetch_file_github(){
 	github_file_url_name="${2}"
 	# For legacy versions - code can be removed at a future date
 	remote_fileurl="http://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${github_file_url_name}"
-
+	echo $remote_fileurl;
 	remote_fileurl_name="GitHub"
-	remote_fileurl_backup_name="Bitbucket"
 	local_filedir="${3}"
 	local_filename="${github_file_url_name}"
 	chmodx="${4:-0}"
@@ -383,7 +371,7 @@ fn_fetch_file_github(){
 	forcedl="${6:-0}"
 	hash="${7:-0}"
 	# Passes vars to the file download function.
-	fn_fetch_file "${remote_fileurl}" "${remote_fileurl_backup}" "${remote_fileurl_name}" "${remote_fileurl_backup_name}" "${local_filedir}" "${local_filename}" "${chmodx}" "${run}" "${forcedl}" "${hash}"
+	fn_fetch_file "${remote_fileurl}" "${remote_fileurl_name}" "${local_filedir}" "${local_filename}" "${chmodx}" "${run}" "${forcedl}" "${md5}"
 }
 
 # Fetches config files from the Git repo.
@@ -392,8 +380,8 @@ fn_fetch_config(){
 	github_file_url_name="${2}"
 	# If master branch will currently running LinuxGSM version to prevent "version mixing". This is ignored if a fork.
 	remote_fileurl="http://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${github_file_url_name}"
+	echo $remote_fileurl;
 	remote_fileurl_name="GitHub"
-	remote_fileurl_backup_name="Bitbucket"
 	local_filedir="${3}"
 	local_filename="${4}"
 	chmodx="nochmodx"
@@ -401,7 +389,7 @@ fn_fetch_config(){
 	forcedl="noforce"
 	hash="nohash"
 	# Passes vars to the file download function.
-	fn_fetch_file "${remote_fileurl}" "${remote_fileurl_backup}" "${remote_fileurl_name}" "${remote_fileurl_backup_name}" "${local_filedir}" "${local_filename}" "${chmodx}" "${run}" "${forcedl}" "${hash}"
+	fn_fetch_file "${remote_fileurl}" "${remote_fileurl_name}" "${local_filedir}" "${local_filename}" "${chmodx}" "${run}" "${forcedl}" "${md5}"
 }
 
 # Fetches modules from the Git repo during first download.
@@ -410,9 +398,8 @@ fn_fetch_function(){
 	github_file_url_name="${functionfile}"
 		# If master branch will currently running LinuxGSM version to prevent "version mixing". This is ignored if a fork.
 	remote_fileurl="http://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${github_file_url_name}"
-
+	echo $remote_fileurl;
 	remote_fileurl_name="GitHub"
-	remote_fileurl_backup_name="Bitbucket"
 	local_filedir="${functionsdir}"
 	local_filename="${github_file_url_name}"
 	chmodx="chmodx"
@@ -420,7 +407,7 @@ fn_fetch_function(){
 	forcedl="noforce"
 	hash="nohash"
 	# Passes vars to the file download function.
-	fn_fetch_file "${remote_fileurl}" "${remote_fileurl_backup}" "${remote_fileurl_name}" "${remote_fileurl_backup_name}" "${local_filedir}" "${local_filename}" "${chmodx}" "${run}" "${forcedl}" "${hash}"
+	fn_fetch_file "${remote_fileurl}" "${remote_fileurl_name}" "${local_filedir}" "${local_filename}" "${chmodx}" "${run}" "${forcedl}" "${md5}"
 }
 
 # Fetches modules from the Git repo during update-lgsm.
@@ -429,17 +416,15 @@ fn_update_function(){
 	github_file_url_name="${functionfile}"
 	# If master branch will currently running LinuxGSM version to prevent "version mixing". This is ignored if a fork.
 	remote_fileurl="http://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${github_file_url_name}"
-
+	echo $remote_fileurl;
 	remote_fileurl_name="GitHub"
-	remote_fileurl_backup_name="Bitbucket"
 	local_filedir="${functionsdir}"
-	local_filename="${github_file_url_name}"
 	chmodx="chmodx"
 	run="norun"
 	forcedl="noforce"
 	hash="nohash"
 	# Passes vars to the file download function.
-	fn_fetch_file "${remote_fileurl}" "${remote_fileurl_backup}" "${remote_fileurl_name}" "${remote_fileurl_backup_name}" "${local_filedir}" "${local_filename}" "${chmodx}" "${run}" "${forcedl}" "${hash}"
+	fn_fetch_file "${remote_fileurl}" "${remote_fileurl_name}" "${local_filedir}" "${local_filename}" "${chmodx}" "${run}" "${forcedl}" "${md5}"
 
 }
 
