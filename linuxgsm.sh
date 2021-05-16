@@ -66,8 +66,8 @@ fn_bootstrap_fetch_file(){
 	local_filename="${4}"
 	chmodx="${5:-0}"
 	run="${6:-0}"
-	forcedl="${6:-0}"
-	md5="${7:-0}"
+	forcedl="${7-0}"
+	md5="${8:-0}"
 	# Download file if missing or download forced.
 	if [ ! -f "${local_filedir}/${local_filename}" ]||[ "${forcedl}" == "forcedl" ]; then
 		# If backup fileurl exists include it.
