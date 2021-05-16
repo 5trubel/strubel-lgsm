@@ -13,6 +13,7 @@ fn_install_steamcmd(){
 	fi
 	if [ ! -d "${steamcmddir}" ]; then
 		mkdir -p "${steamcmddir}"
+		echo "MKDIR"
 	fi
 	fn_fetch_file "http://media.steampowered.com/client/steamcmd_linux.tar.gz" "" "" "" "${tmpdir}" "steamcmd_linux.tar.gz" "" "norun" "noforce" "nohash"
 	fn_dl_extract "${tmpdir}" "steamcmd_linux.tar.gz" "${steamcmddir}"
@@ -40,11 +41,14 @@ fn_check_steamcmd_user(){
 }
 
 fn_check_steamcmd(){
+	
 	# Checks if SteamCMD exists when starting or updating a server.
 	# Only install if steamcmd package is missing or steamcmd dir is missing.
 	if [ ! -f "${steamcmddir}/steamcmd.sh" ]&&[ -z "$(command -v steamcmd 2>/dev/null)" ]; then
 		if [ "${commandname}" == "INSTALL" ]; then
+		echo "Install CMD"
 			fn_install_steamcmd
+			
 		else
 			fn_print_warn_nl "SteamCMD is missing"
 			fn_script_log_warn "SteamCMD is missing"
