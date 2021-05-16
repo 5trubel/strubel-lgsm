@@ -18,7 +18,7 @@ fn_script_log_info "Updating LinuxGSM"
 fn_print_dots "Selecting repo"
 fn_script_log_info "Selecting repo"
 # Select remotereponame
-curl --connect-timeout 10 -IsfL "https://raw.githubusercontent.com/${githubuser}/${githubrepo}/${githubbranch}/linuxgsm.sh" 1>/dev/null
+curl --connect-timeout 10 -IsfL "https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/linuxgsm.sh" 1>/dev/null
 if [ $? != "0" ]; then
 	fn_print_fail_nl "Selecting repo: Unable to to access GitHub or Bitbucket repositories"
 	fn_script_log_fatal "Selecting repo: Unable to to access GitHub or Bitbucket repositories"
@@ -31,7 +31,7 @@ fi
 # Check linuxsm.sh
 echo -en "checking ${remotereponame} linuxgsm.sh...\c"
 
-curl --connect-timeout 10 -IsfL "https://raw.githubusercontent.com/${githubuser}/${githubrepo}/${githubbranch}/linuxgsm.sh" 1>/dev/null
+curl --connect-timeout 10 -IsfL "https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/linuxgsm.sh" 1>/dev/null
 if [ $? != "0" ]; then
 	fn_print_fail_eol_nl
 	fn_script_log_fatal "Checking ${remotereponame} linuxgsm.sh"
@@ -39,7 +39,7 @@ if [ $? != "0" ]; then
 	core_exit.sh
 fi
 
-tmp_script_diff=$(diff "${tmpdir}/linuxgsm.sh" <(curl --connect-timeout 10 -s "https://raw.githubusercontent.com/${githubuser}/${githubrepo}/${githubbranch}/linuxgsm.sh"))
+tmp_script_diff=$(diff "${tmpdir}/linuxgsm.sh" <(curl --connect-timeout 10 -s "https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/linuxgsm.sh"))
 
 if [ "${tmp_script_diff}" != "" ]; then
 	fn_print_update_eol_nl
@@ -104,7 +104,7 @@ fi
 echo -en "checking ${remotereponame} config _default.cfg...\c"
 fn_script_log_info "Checking ${remotereponame} config _default.cfg"
 
-curl --connect-timeout 10 -IsfL "https://raw.githubusercontent.com/${githubuser}/${githubrepo}/${githubbranch}/lgsm/config-default/config-lgsm/${gameservername}/_default.cfg" 1>/dev/null
+curl --connect-timeout 10 -IsfL "https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/lgsm/config-default/config-lgsm/${gameservername}/_default.cfg" 1>/dev/null
 
 if [ $? != "0" ]; then
 	fn_print_fail_eol_nl
@@ -114,7 +114,7 @@ if [ $? != "0" ]; then
 fi
 
 
-config_file_diff=$(diff "${configdirdefault}/config-lgsm/${gameservername}/_default.cfg" <(curl --connect-timeout 10 -s "https://raw.githubusercontent.com/${githubuser}/${githubrepo}/${githubbranch}/lgsm/config-default/config-lgsm/${gameservername}/_default.cfg"))
+config_file_diff=$(diff "${configdirdefault}/config-lgsm/${gameservername}/_default.cfg" <(curl --connect-timeout 10 -s "https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/lgsm/config-default/config-lgsm/${gameservername}/_default.cfg"))
 
 if [ "${config_file_diff}" != "" ]; then
 	fn_print_update_eol_nl
@@ -138,7 +138,7 @@ if [ -n "${functionsdir}" ]; then
 			echo -en "checking ${remotereponame} module ${functionfile}...\c"
 			github_file_url_dir="lgsm/functions"
 			
-			curl --connect-timeout 10 -IsfL "https://raw.githubusercontent.com/${githubuser}/${githubrepo}/${githubbranch}/${github_file_url_dir}/${functionfile}" 1>/dev/null
+			curl --connect-timeout 10 -IsfL "https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${functionfile}" 1>/dev/null
 			if [ $? != 0 ]; then
 				fn_print_error_eol_nl
 				fn_script_log_error "Checking ${remotereponame} module ${functionfile}"
@@ -153,7 +153,7 @@ if [ -n "${functionsdir}" ]; then
 				fi
 			else
 				# compare file
-				function_file_diff=$(diff "${functionsdir}/${functionfile}" <(curl --connect-timeout 10 -s "https://raw.githubusercontent.com/${githubuser}/${githubrepo}/${githubbranch}/${github_file_url_dir}/${functionfile}"))
+				function_file_diff=$(diff "${functionsdir}/${functionfile}" <(curl --connect-timeout 10 -s "https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${functionfile}"))
 
 				# results
 				if [ "${function_file_diff}" != "" ]; then
