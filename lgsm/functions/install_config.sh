@@ -152,6 +152,8 @@ fn_list_config_locations(){
 			echo -e "Game Server Config Dir: ${servercfgfullpath}"
 		else
 			echo -e "Config file: ${red}${servercfgfullpath} (${red}FILE MISSING${default})"
+			rm -rf "${lgsmdir}/config-default/config-lgsm/"
+			cp -nv "${lgsmdir}/config-lgsm/" "${lgsmdir}/config-default/config-lgsm/"  
 		fi
 	fi
 	# echo -e "LinuxGSM Config: ${lgsmdir}/config-lgsm/${gameservername}"
