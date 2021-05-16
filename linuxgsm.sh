@@ -68,10 +68,11 @@ fn_bootstrap_fetch_file(){
 	run="${6:-0}"
 	forcedl="${7-0}"
 	md5="${8:-0}"
+	echo "VAR SET"
 	# Download file if missing or download forced.
 	if [ ! -f "${local_filedir}/${local_filename}" ]||[ "${forcedl}" == "forcedl" ]; then
-		# If backup fileurl exists include it.
-		counter=1
+
+		counter=0
 		remote_fileurls_array=( remote_fileurl )
 
 		for remote_fileurl_array in "${remote_fileurls_array[@]}"; do
@@ -89,7 +90,8 @@ fn_bootstrap_fetch_file(){
 
 			echo -en "fetching ${fileurl_name} ${local_filename}...\c"
 			curlcmd=$(curl --connect-timeout 10 -s --fail -L -o "${local_filedir}/${local_filename}" "${fileurl}" 2>&1)
-
+			echo $curlcmd
+			
 			local exitcode=$?
 
 			# Download will fail if downloads a html file.
@@ -150,7 +152,7 @@ fn_bootstrap_fetch_file_github(){
 	github_file_url_dir="${1}"
 	github_file_url_name="${2}"
 	# If master branch will currently running LinuxGSM version to prevent "version mixing". This is ignored if a fork.
-	remote_fileurl="https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${github_file_url_name}"
+	remote_fileurl="http://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${github_file_url_name}"
 	remote_fileurl_name="GitHub"
 	echo $remote_fileurl;
 	local_filedir="${3}"
