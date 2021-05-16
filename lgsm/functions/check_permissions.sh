@@ -29,7 +29,6 @@ fn_check_ownership(){
 		fn_print_information_nl "The current user ($(whoami)) does not have ownership of the following files:"
 		fn_script_log_info "The current user ($(whoami)) does not have ownership of the following files:"
 		{
-			echo -e "User\tGroup\tFile\n"
 			if [ "${selfownissue}" == "1" ]; then
 				find "${rootdir}/${selfname}" -not -user "$(whoami)" -printf "%u\t\t%g\t%p\n"
 			fi

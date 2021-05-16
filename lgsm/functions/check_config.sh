@@ -10,7 +10,6 @@ functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 if [ -n "${servercfgfullpath}" ]&&[ ! -f "${servercfgfullpath}" ]; then
 	fn_print_dots ""
 	fn_print_warn_nl "Configuration file missing!"
-	echo -e "${servercfgfullpath}"
 	fn_script_log_warn "Configuration file missing!"
 	fn_script_log_warn "${servercfgfullpath}"
 	install_config.sh

@@ -28,8 +28,6 @@ else
 	fn_print_ok_nl "Selecting repo: ${remotereponame}"
 fi
 
-# Check linuxsm.sh
-echo -en "checking ${remotereponame} linuxgsm.sh...\c"
 
 curl --connect-timeout 10 -IsfL "https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/linuxgsm.sh" 1>/dev/null
 if [ $? != "0" ]; then
@@ -54,7 +52,6 @@ fi
 # Check gameserver.sh
 # Compare gameserver.sh against linuxgsm.sh in the tmp dir.
 # Ignoring server specific vars.
-echo -en "checking ${selfname}...\c"
 fn_script_log_info "Checking ${selfname}"
 script_diff=$(diff <(sed '\/shortname/d;\/gameservername/d;\/gamename/d;\/githubuser/d;\/githubrepo/d;\/githubbranch/d' "${tmpdir}/linuxgsm.sh") <(sed '\/shortname/d;\/gameservername/d;\/gamename/d;\/githubuser/d;\/githubrepo/d;\/githubbranch/d' "${rootdir}/${selfname}"))
 if [ "${script_diff}" != "" ]; then
@@ -101,7 +98,6 @@ else
 fi
 
 # Check _default.cfg.
-echo -en "checking ${remotereponame} config _default.cfg...\c"
 fn_script_log_info "Checking ${remotereponame} config _default.cfg"
 
 curl --connect-timeout 10 -IsfL "https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/lgsm/config-default/config-lgsm/${gameservername}/_default.cfg" 1>/dev/null
@@ -135,7 +131,6 @@ if [ -n "${functionsdir}" ]; then
 		for functionfile in *; do
 			# check if module exists in the repo and remove if missing.
 			# commonly used if module names change.
-			echo -en "checking ${remotereponame} module ${functionfile}...\c"
 			github_file_url_dir="lgsm/functions"
 			
 			curl --connect-timeout 10 -IsfL "https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${functionfile}" 1>/dev/null

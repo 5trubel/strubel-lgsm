@@ -18,13 +18,7 @@ fn_install_mono_repo(){
 		if [ $? -eq 0 ]; then
 			fn_print_info_nl "Automatically adding Mono repository."
 			fn_script_log_info "Automatically adding Mono repository."
-			echo -en ".\r"
-			sleep 1
-			echo -en "..\r"
-			sleep 1
-			echo -en "...\r"
-			sleep 1
-			echo -en "   \r"
+
 			if [ "${distroid}" == "ubuntu" ]; then
 				if [ "${distroversion}" == "18.04" ]; then
 					cmd="sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF;echo 'deb https://download.mono-project.com/repo/ubuntu stable-bionic main' | sudo tee /etc/apt/sources.list.d/mono-official-stable.list;sudo apt-get update"
@@ -173,14 +167,12 @@ if [ "${javacheck}" == "1" ]; then
 		# If dependency is found.
 		missingdep=0
 		if [ "${commandname}" == "INSTALL" ]; then
-			echo -e "${green}${deptocheck}${default}"
 			fn_sleep_time
 		fi
 	else
 		# If dependency is not found.
 		missingdep=1
 		if [ "${commandname}" == "INSTALL" ]; then
-			echo -e "${red}${deptocheck}${default}"
 			fn_sleep_time
 		fi
 		# Define required dependencies for SteamCMD.
@@ -238,7 +230,6 @@ fn_found_missing_deps(){
 		fi
 		if [ "${jqstatus}" ]; then
 			fn_print_warning_nl "jq is not available in the ${distroname} repository."
-			echo -e "	* https://docs.linuxgsm.com/requirements/jq"
 		fi
 		if [ "${autoinstall}" == "1" ]; then
 			sudo -n true > /dev/null 2>&1
@@ -248,13 +239,7 @@ fn_found_missing_deps(){
 		if [ $? -eq 0 ]; then
 			fn_print_information_nl "Automatically installing missing dependencies."
 			fn_script_log_info "Automatically installing missing dependencies."
-			echo -en ".\r"
-			sleep 1
-			echo -en "..\r"
-			sleep 1
-			echo -en "...\r"
-			sleep 1
-			echo -en "   \r"
+
 			if [ "$(command -v dpkg-query 2>/dev/null)" ]; then
 				cmd="echo steamcmd steam/question select \"I AGREE\" | sudo debconf-set-selections; echo steamcmd steam/license note '' | sudo debconf-set-selections; sudo dpkg --add-architecture i386; sudo apt-get update; sudo apt-get -y install ${array_deps_missing[*]}"
 				eval "${cmd}"
@@ -279,8 +264,8 @@ fn_found_missing_deps(){
 					echo -e "	sudo yum install ${array_deps_missing[*]}"
 				fi
 				if [ "${steamcmdfail}" ]; then
-					echo -e ""
-					if [ "${commandname}" == "INSTALL" ]; then
+
+						f [ "${commandname}" == "INSTALL" ]; then
 						fn_print_failure_nl "Missing dependencies required to run SteamCMD."
 						fn_script_log_fatal "Missing dependencies required to run SteamCMD."
 						core_exit.sh
@@ -581,16 +566,12 @@ fn_deps_build_redhat(){
 
 if [ "${commandname}" == "INSTALL" ]; then
 	if [ "$(whoami)" == "root" ]; then
-		echo -e ""
-		echo -e "${lightyellow}Checking Dependencies as root${default}"
-		echo -e "================================="
+
 		fn_print_information_nl "Checking any missing dependencies for ${gamename} server only."
 		fn_print_information_nl "This will NOT install a ${gamename} server."
 		fn_sleep_time
 	else
-		echo -e ""
-		echo -e "${lightyellow}Checking Dependencies${default}"
-		echo -e "================================="
+
 	fi
 fi
 

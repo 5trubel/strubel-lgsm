@@ -63,32 +63,26 @@ fn_check_steamcmd_dir(){
 	# Create Steam installation directory.
 	if [ ! -d "${XDG_DATA_HOME:="${HOME}/.local/share"}/Steam" ]; then
 		mkdir -p "${XDG_DATA_HOME:="${HOME}/.local/share"}/Steam"
-		echo 'mkdir -p "${XDG_DATA_HOME:="${HOME}/.local/share"}/Steam"'
 	fi
 
 	# Create common Steam directory.
 	if [ ! -d "${HOME}/.steam" ]; then
 		mkdir -p "${HOME}/.steam"
-		echo 'mkdir -p "${HOME}/.steam"'
 	fi
 
 	# Symbolic links to Steam installation directory.
 	if [ ! -L "${HOME}/.steam/root" ]; then
 		if [ -d "${HOME}/.steam/root" ]; then
 			rm "${HOME}/.steam/root"
-			echo 'rm "${HOME}/.steam/root"'
 		fi
 		ln -s "${XDG_DATA_HOME:="${HOME}/.local/share"}/Steam" "${HOME}/.steam/root"
-		echo 'ln -s "${XDG_DATA_HOME:="${HOME}/.local/share"}/Steam" "${HOME}/.steam/root"'
 	fi
 
 	if [ ! -L "${HOME}/.steam/steam" ]; then
 		if [ -d "${HOME}/.steam/steam" ]; then
 			rm -rf "${HOME}/.steam/steam"
-			echo 'rm -rf "${HOME}/.steam/steam"'
 		fi
 		ln -s "${XDG_DATA_HOME:="${HOME}/.local/share"}/Steam" "${HOME}/.steam/steam"
-		echo 'ln -s "${XDG_DATA_HOME:="${HOME}/.local/share"}/Steam" "${HOME}/.steam/steam"'
 	fi
 }
 
@@ -96,12 +90,10 @@ fn_check_steamcmd_dir_legacy(){
 	# Remove old Steam installation directories ~/Steam and ${rootdir}/steamcmd
 	if [ -d "${rootdir}/steamcmd" ]&&[ "${steamcmddir}" == "${XDG_DATA_HOME:="${HOME}/.local/share"}/Steam" ]; then
 		rm -rf "${rootdir:?}/steamcmd"
-		echo 'rm -rf "${rootdir:?}/steamcmd"'
 	fi
 
 	if [ -d "${HOME}/Steam" ]&&[ "${steamcmddir}" == "${XDG_DATA_HOME:="${HOME}/.local/share"}/Steam" ]; then
 		rm -rf "${HOME}/Steam"
-		echo 'rm -rf "${HOME}/Steam"'
 	fi
 }
 
@@ -128,7 +120,6 @@ fn_check_steamcmd_clear(){
 	# Will remove steamcmd dir if steamcmd package is installed.
 	if [ "$(command -v steamcmd 2>/dev/null)" ]&&[ -d "${rootdir}/steamcmd" ]; then
 		rm -rf "${steamcmddir:?}"
-		echo 'rm -rf "${steamcmddir:?}"'
 		exitcode=$?
 		if [ "${exitcode}" != 0 ]; then
 			fn_script_log_fatal "Removing ${rootdir}/steamcmd"

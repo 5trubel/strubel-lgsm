@@ -12,8 +12,6 @@ info_config.sh
 info_parms.sh
 
 if [ ! -f "/bin/ip" ]; then
-	ipcommand="/sbin/ip"
-else
 	ipcommand="ip"
 fi
 getip=$(${ipcommand} -o -4 addr | awk '{print $4}' | grep -oe '\([0-9]\{1,3\}\.\?\)\{4\}' | sort -u | grep -v 127.0.0)

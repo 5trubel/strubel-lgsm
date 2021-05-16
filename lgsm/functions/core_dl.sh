@@ -23,11 +23,9 @@ fn_dl_steamcmd(){
 	fn_print_start_nl "${remotelocation}"
 	fn_script_log_info "${commandaction} ${selfname}: ${remotelocation}"
 	if [ -n "${branch}" ]; then
-		echo -e "Branch: ${branch}"
 		fn_script_log_info "Branch: ${branch}"
 	fi
 	if [ -n "${betapassword}" ]; then
-		echo -e "Branch password: ${betapassword}"
 		fn_script_log_info "Branch password: ${betapassword}"
 	fi
 	if [ -d "${steamcmddir}" ]; then
@@ -255,8 +253,6 @@ fn_fetch_file(){
 	run="${6:-0}"
 	forcedl="${7-0}"
 	md5="${8:-0}"
-echo "VAR SET"
-
 	# Download file if missing or download forced.
 	if [ ! -f "${local_filedir}/${local_filename}" ]||[ "${forcedl}" == "forcedl" ]; then
 		# If backup fileurl exists include it.
@@ -362,7 +358,6 @@ fn_fetch_file_github(){
 	github_file_url_name="${2}"
 	# For legacy versions - code can be removed at a future date
 	remote_fileurl="http://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${github_file_url_name}"
-	echo $remote_fileurl;
 	remote_fileurl_name="GitHub"
 	local_filedir="${3}"
 	local_filename="${github_file_url_name}"

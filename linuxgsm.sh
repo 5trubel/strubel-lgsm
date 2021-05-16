@@ -69,7 +69,6 @@ fn_bootstrap_fetch_file(){
 	run="${6:-0}"
 	forcedl="${7-0}"
 	md5="${8:-0}"
-	echo "VAR SET"
 	# Download file if missing or download forced.
 	if [ ! -f "${local_filedir}/${local_filename}" ]||[ "${forcedl}" == "forcedl" ]; then
 
@@ -89,10 +88,8 @@ fn_bootstrap_fetch_file(){
 			trap fn_fetch_trap INT
 			# Larger files show a progress bar.
 
-			echo -en "fetching ${fileurl_name} ${local_filename}...\c"
 			curlcmd=$(curl --connect-timeout 10 -s --fail -L -o "${local_filedir}/${local_filename}" "${fileurl}" 2>&1)
-			echo $curlcmd
-			
+
 			local exitcode=$?
 
 			# Download will fail if downloads a html file.
@@ -120,9 +117,6 @@ fn_bootstrap_fetch_file(){
 					fi
 				fi
 			else
-				echo -en "OK"
-				sleep 0.3
-				echo -en "\033[2K\\r"
 				if [ -f "${lgsmlog}" ]; then
 					fn_script_log_pass "Downloading ${local_filename}"
 				fi
@@ -155,7 +149,6 @@ fn_bootstrap_fetch_file_github(){
 	# If master branch will currently running LinuxGSM version to prevent "version mixing". This is ignored if a fork.
 	remote_fileurl="http://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${github_file_url_name}"
 	remote_fileurl_name="GitHub"
-	echo $remote_fileurl;
 	local_filedir="${3}"
 	local_filename="${github_file_url_name}"
 	chmodx="${4:-0}"
@@ -261,15 +254,7 @@ fn_server_info(){
 
 fn_install_getopt(){
 	userinput="empty"
-	echo -e "Usage: $0 [option]"
-	echo -e ""
-	echo -e "Installer - Linux Game Server Managers - Version ${version}"
-	echo -e "https://linuxgsm.com"
-	echo -e ""
-	echo -e "Commands"
-	echo -e "install\t\t| Select server to install."
-	echo -e "servername\t| Enter name of game server to install. e.g $0 csgoserver."
-	echo -e "list\t\t| List all servers available for install."
+
 	exit
 }
 
@@ -285,15 +270,7 @@ fn_install_file(){
 	cp -R "${selfname}" "${local_filename}"
 	sed -i -e "s/shortname=\"core\"/shortname=\"${shortname}\"/g" "${local_filename}"
 	sed -i -e "s/gameservername=\"core\"/gameservername=\"${gameservername}\"/g" "${local_filename}"
-	echo -e "Installed ${gamename} server as ${local_filename}"
-	echo -e ""
-	if [ ! -d "${serverfiles}" ]; then
-		echo -e "./${local_filename} install"
-	else
-		echo -e "Remember to check server ports"
-		echo -e "./${local_filename} details"
-	fi
-	echo -e ""
+
 	exit
 }
 
@@ -301,11 +278,9 @@ fn_install_file(){
 if [ "$(whoami)" == "root" ]; then
 	if [ "${userinput}" == "install" ]||[ "${userinput}" == "auto-install" ]||[ "${userinput}" == "i" ]||[ "${userinput}" == "ai" ]; then
 		if [ "${shortname}" == "core" ]; then
-			echo -e "[ FAIL ] Do NOT run this script as root!"
 			exit 1
 		fi
 	elif [ ! -f "${functionsdir}/core_functions.sh" ]||[ ! -f "${functionsdir}/check_root.sh" ]||[ ! -f "${functionsdir}/core_messages.sh" ]; then
-		echo -e "[ FAIL ] Do NOT run this script as root!"
 		exit 1
 	else
 		core_functions.sh
@@ -335,11 +310,9 @@ if [ "${shortname}" == "core" ]; then
 		if [ "${result}" == "${gameservername}" ]; then
 			fn_install_file
 		elif [ "${result}" == "" ]; then
-			echo -e "Install canceled"
 		else
 			echo -e "[ FAIL ] menu result does not match gameservername"
-			echo -e "result: ${result}"
-			echo -e "gameservername: ${gameservername}"
+
 		fi
 	elif [ "${userinput}" ]; then
 		fn_server_info
@@ -365,25 +338,23 @@ else
 		fi
 		if [ ! -f "${configdirserver}/_default.cfg" ]; then
 			mkdir -p "${configdirserver}"
-			echo -en "copying _default.cfg...\c"
 			cp -R "${configdirdefault}/config-lgsm/${gameservername}/_default.cfg" "${configdirserver}/_default.cfg"
 			if [ $? != 0 ]; then
 				echo -e "FAIL"
 				exit 1
 			else
-				echo -e "OK"
+
 			fi
 		else
 			function_file_diff=$(diff -q "${configdirdefault}/config-lgsm/${gameservername}/_default.cfg" "${configdirserver}/_default.cfg")
 			if [ "${function_file_diff}" != "" ]; then
 				fn_print_warn_nl "_default.cfg has altered. reloading config."
-				echo -en "copying _default.cfg...\c"
 				cp -R "${configdirdefault}/config-lgsm/${gameservername}/_default.cfg" "${configdirserver}/_default.cfg"
 				if [ $? != 0 ]; then
 					echo -e "FAIL"
 					exit 1
 				else
-					echo -e "OK"
+
 				fi
 			fi
 		fi

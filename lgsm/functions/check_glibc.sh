@@ -20,10 +20,7 @@ elif [ "$(printf '%s\n'${glibc}'\n' "${glibcversion}" | sort -V | head -n 1)" !=
 	fn_print_dots "glibc"
 	fn_print_error_nl "glibc requirements not met"
 	fn_script_log_error "glibc requirements not met"
-	echo -en "\n"
-	echo -e "	* glibc required: ${glibc}"
-	echo -e "	* glibc installed: ${red}${glibcversion}${default}"
-	echo -en "\n"
+
 	fn_print_information_nl "distro upgrade is required"
 	fn_script_log_info "distro upgrade is required"
 fi

@@ -10,7 +10,6 @@ functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 # Check if executable exists
 if [ ! -f "${executabledir}/${execname}" ]; then
 	fn_print_fail_nl "executable was not found"
-	echo -e "* ${executabledir}/${execname}"
 	if [ -d "${lgsmlogdir}" ]; then
 		fn_script_log_fatal "Executable was not found: ${executabledir}/${execname}"
 	fi
