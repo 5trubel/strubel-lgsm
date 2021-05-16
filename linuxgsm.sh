@@ -61,36 +61,24 @@ core_functions.sh(){
 # Fetches the core functions required before passed off to core_dl.sh.
 fn_bootstrap_fetch_file(){
 	remote_fileurl="${1}"
-	remote_fileurl_backup="${2}"
-	remote_fileurl_name="${3}"
-	remote_fileurl_backup_name="${4}"
-	local_filedir="${5}"
-	local_filename="${6}"
-	chmodx="${7:-0}"
-	run="${8:-0}"
-	forcedl="${9:-0}"
-	md5="${10:-0}"
+	remote_fileurl_name="${2}"
+	local_filedir="${3}"
+	local_filename="${4}"
+	chmodx="${5:-0}"
+	run="${6:-0}"
+	forcedl="${6:-0}"
+	md5="${7:-0}"
 	# Download file if missing or download forced.
 	if [ ! -f "${local_filedir}/${local_filename}" ]||[ "${forcedl}" == "forcedl" ]; then
 		# If backup fileurl exists include it.
-		if [ -n "${remote_fileurl_backup}" ]; then
-			# counter set to 0 to allow second try
-			counter=0
-			remote_fileurls_array=( remote_fileurl remote_fileurl_backup )
-		else
-			# counter set to 1 to not allow second try
-			counter=1
-			remote_fileurls_array=( remote_fileurl )
-		fi
+		counter=1
+		remote_fileurls_array=( remote_fileurl )
 
 		for remote_fileurl_array in "${remote_fileurls_array[@]}"; do
-			if [ "${remote_fileurl_array}" == "remote_fileurl" ]; then
-				fileurl="${remote_fileurl}"
-				fileurl_name="${remote_fileurl_name}"
-			elif [ "${remote_fileurl_array}" == "remote_fileurl_backup" ]; then
-				fileurl="${remote_fileurl_backup}"
-				fileurl_name="${remote_fileurl_backup_name}"
-			fi
+			
+			fileurl="${remote_fileurl}"
+			fileurl_name="${remote_fileurl_name}"
+
 			counter=$((counter+1))
 			if [ ! -d "${local_filedir}" ]; then
 				mkdir -p "${local_filedir}"
