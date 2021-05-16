@@ -41,8 +41,9 @@ fn_default_config_remote(){
 		elif [ "${shortname}" == "dst" ]&&[ "${config}" == "${clustercfgdefault}" ]; then
 			cp -nv "${lgsmdir}/config-default/config-game/${clustercfgdefault}" "${clustercfgfullpath}"
 		else
-			mkdir -p "${servercfgdir}"
-			cp -nv "${lgsmdir}/config-default/config-game/${config}" "${servercfgdir}/${config}"
+			cp -nv "${lgsmdir}/config-lgsm/" "${lgsmdir}/config-default/config-lgsm/" 
+			# mkdir -p "${servercfgdir}"
+			# cp -nv "${lgsmdir}/config-default/config-game/${config}" "${servercfgdir}/${config}"
 		fi
 	done
 	fn_sleep_time
@@ -153,9 +154,9 @@ fn_list_config_locations(){
 			echo -e "Config file: ${red}${servercfgfullpath} (${red}FILE MISSING${default})"
 		fi
 	fi
-	echo -e "LinuxGSM Config: ${lgsmdir}/config-lgsm/${gameservername}"
-	echo -e "Documentation: https://docs.linuxgsm.com/configuration/game-server-config"
-	echo -e ""
+	# echo -e "LinuxGSM Config: ${lgsmdir}/config-lgsm/${gameservername}"
+	# echo -e "Documentation: https://docs.linuxgsm.com/configuration/game-server-config"
+	# echo -e ""
 }
 
 if [ "${shortname}" == "sdtd" ]; then

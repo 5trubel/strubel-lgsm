@@ -570,8 +570,6 @@ if [ "${commandname}" == "INSTALL" ]; then
 		fn_print_information_nl "Checking any missing dependencies for ${gamename} server only."
 		fn_print_information_nl "This will NOT install a ${gamename} server."
 		fn_sleep_time
-	else
-
 	fi
 fi
 
