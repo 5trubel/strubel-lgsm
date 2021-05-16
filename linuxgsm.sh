@@ -164,6 +164,7 @@ fn_bootstrap_fetch_file_github(){
 	# If master branch will currently running LinuxGSM version to prevent "version mixing". This is ignored if a fork.
 	remote_fileurl="https://gitlab.gamerparty.eu/gameserver_docker/strubelgsm/-/raw/master/${github_file_url_dir}/${github_file_url_name}"
 	remote_fileurl_name="GitHub"
+	echo $remote_fileurl;
 	local_filedir="${3}"
 	local_filename="${github_file_url_name}"
 	chmodx="${4:-0}"
