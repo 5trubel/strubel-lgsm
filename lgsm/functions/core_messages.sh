@@ -530,6 +530,7 @@ fn_print_update_eol_nl(){
 }
 
 fn_print_ascii_logo(){
+	echo "ASCII art Disabled"
 }
 
 fn_print_restart_warning(){
