@@ -13,12 +13,9 @@ fn_install_steamcmd(){
 	fi
 	if [ ! -d "${steamcmddir}" ]; then
 		mkdir -p "${steamcmddir}"
-		echo "mkdir -p "${steamcmddir}""
 	fi
 	fn_fetch_file "http://media.steampowered.com/client/steamcmd_linux.tar.gz" "" "" "" "${tmpdir}" "steamcmd_linux.tar.gz" "" "norun" "noforce" "nohash"
-	echo "http://media.steampowered.com/client/steamcmd_linux.tar.gz _ _ _ ${tmpdir} steamcmd_linux.tar.gz _ norun noforce nohash"
 	fn_dl_extract "${tmpdir}" "steamcmd_linux.tar.gz" "${steamcmddir}"
-	echo "${tmpdir} steamcmd_linux.tar.gz ${steamcmddir}"
 	chmod +x "${steamcmddir}/steamcmd.sh"
 }
 
@@ -26,7 +23,6 @@ fn_check_steamcmd_user(){
 	# Checks if steamuser is setup.
 	if [ "${steamuser}" == "username" ]; then
 		fn_print_fail_nl "Steam login not set. Update steamuser in ${configdirserver}"
-		echo -e "	* Change steamuser=\"username\" to a valid steam login."
 		if [ -d "${lgsmlogdir}" ]; then
 			fn_script_log_fatal "Steam login not set. Update steamuser in ${configdirserver}"
 		fi
@@ -47,21 +43,16 @@ fn_check_steamcmd(){
 	# Checks if SteamCMD exists when starting or updating a server.
 	# Only install if steamcmd package is missing or steamcmd dir is missing.
 	if [ ! -f "${steamcmddir}/steamcmd.sh" ]&&[ -z "$(command -v steamcmd 2>/dev/null)" ]; then
-	echo "${steamcmddir}/steamcmd.sh"
 		if [ "${commandname}" == "INSTALL" ]; then
-		echo "Install CMD"
 			fn_install_steamcmd
-			echo "fn_install_steamcmd"
 		else
 			fn_print_warn_nl "SteamCMD is missing"
 			fn_script_log_warn "SteamCMD is missing"
 			fn_install_steamcmd
-			echo "fn_install_steamcmd"
 		fi
 	elif [ "${commandname}" == "INSTALL" ]; then
 		fn_print_information "SteamCMD is already installed..."
 		fn_print_ok_eol_nl
-		echo "fn_print_ok_eol_nl"
 	fi
 }
 
