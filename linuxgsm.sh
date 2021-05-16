@@ -309,7 +309,6 @@ if [ "${shortname}" == "core" ]; then
 		fn_server_info
 		if [ "${result}" == "${gameservername}" ]; then
 			fn_install_file
-		elif [ "${result}" == "" ]; then
 		else
 			echo -e "[ FAIL ] menu result does not match gameservername"
 
