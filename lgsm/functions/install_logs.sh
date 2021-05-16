@@ -7,9 +7,6 @@
 
 functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 
-if [ "${checklogs}" != "1" ]; then
-
-fi
 fn_sleep_time
 # Create LinuxGSM logs.
 

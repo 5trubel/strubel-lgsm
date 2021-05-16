@@ -265,7 +265,7 @@ fn_found_missing_deps(){
 				fi
 				if [ "${steamcmdfail}" ]; then
 
-						f [ "${commandname}" == "INSTALL" ]; then
+					if [ "${commandname}" == "INSTALL" ]; then
 						fn_print_failure_nl "Missing dependencies required to run SteamCMD."
 						fn_script_log_fatal "Missing dependencies required to run SteamCMD."
 						core_exit.sh
