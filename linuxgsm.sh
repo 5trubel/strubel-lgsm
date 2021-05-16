@@ -20,6 +20,11 @@ if [ -f ".dev-debug" ]; then
 	set -x
 fi
 
+mkdir logs
+mkdir logs/script
+mkdir logs/gameserver
+mkdir logs/console 
+
 version="v21.2.3"
 shortname="core"
 gameservername="core"
