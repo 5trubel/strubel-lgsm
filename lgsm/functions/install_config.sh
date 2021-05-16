@@ -41,7 +41,7 @@ fn_default_config_remote(){
 		elif [ "${shortname}" == "dst" ]&&[ "${config}" == "${clustercfgdefault}" ]; then
 			cp -nv "${lgsmdir}/config-default/config-game/${clustercfgdefault}" "${clustercfgfullpath}"
 		else
-			cp -nv "${lgsmdir}/config-lgsm/" "${lgsmdir}/config-default/config-lgsm/" 
+			cp -rnv "${lgsmdir}/config-lgsm/" "${lgsmdir}/config-default/config-lgsm/" 
 			# mkdir -p "${servercfgdir}"
 			# cp -nv "${lgsmdir}/config-default/config-game/${config}" "${servercfgdir}/${config}"
 		fi
@@ -153,7 +153,7 @@ fn_list_config_locations(){
 		else
 			echo -e "Config file: ${red}${servercfgfullpath} (${red}FILE MISSING${default})"
 			rm -rf "${lgsmdir}/config-default/config-lgsm/"
-			cp -nv "${lgsmdir}/config-lgsm/" "${lgsmdir}/config-default/config-lgsm/"  
+			cp -rnv "${lgsmdir}/config-lgsm/" "${lgsmdir}/config-default/config-lgsm/"  
 		fi
 	fi
 	# echo -e "LinuxGSM Config: ${lgsmdir}/config-lgsm/${gameservername}"
