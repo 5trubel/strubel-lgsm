@@ -341,7 +341,6 @@ else
 			if [ $? != 0 ]; then
 				echo -e "FAIL"
 				exit 1
-			else
 
 			fi
 		else
@@ -352,8 +351,6 @@ else
 				if [ $? != 0 ]; then
 					echo -e "FAIL"
 					exit 1
-				else
-
 				fi
 			fi
 		fi
