@@ -344,15 +344,7 @@ fn_deps_build_debian(){
 			array_deps_required+=( lib32stdc++6 )
 		fi
 	fi
-	# If requires steamcmd.
-	if [ "${appid}" ]; then
-		# Will not use apt if non-free repo is missing or Ubuntu 14.04
-		if [ "${distroversion}" == "14.04" ]||[ "${distroid}" == "debian" ]&& ! grep -qE "^deb .*non-free" /etc/apt/sources.list; then
-			:
-		else
-			array_deps_required+=( steamcmd libsdl2-2.0-0:i386 )
-		fi
-	fi
+
 
 	# Game Specific requirements.
 
@@ -566,9 +558,6 @@ fn_deps_build_redhat(){
 
 if [ "${commandname}" == "INSTALL" ]; then
 	if [ "$(whoami)" == "root" ]; then
-
-		fn_print_information_nl "Checking any missing dependencies for ${gamename} server only."
-		fn_print_information_nl "This will NOT install a ${gamename} server."
 		fn_sleep_time
 	fi
 fi

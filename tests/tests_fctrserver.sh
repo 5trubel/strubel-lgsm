@@ -190,13 +190,11 @@ fn_bootstrap_fetch_file_github(){
 # Installer menu.
 
 fn_print_center() {
-	columns=$(tput cols)
-	line="$*"
-	printf "%*s\n" $(( (${#line} + columns) / 2)) "${line}"
+	#Deactivated
 }
 
 fn_print_horizontal(){
-	printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "="
+		#Deactivated
 }
 
 # Bash menu.

@@ -132,142 +132,65 @@ fn_script_log_update(){
 
 # [ .... ]
 fn_print_dots(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[ .... ] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[ .... ] $*"
-	fi
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_dots_nl(){
-	if [ "${commandaction}" ]; then
-		echo -e "${creeol}[ .... ] ${commandaction} ${selfname}: $*"
-	else
-		echo -e "${creeol}[ .... ] $*"
-	fi
-	fn_sleep_time
-	echo -en "\n"
+	#Deactivated
 }
 
 # [  OK  ]
 fn_print_ok(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${green}  OK  ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${green}  OK  ${default}] $*"
-	fi
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_ok_nl(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${green}  OK  ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${green}  OK  ${default}] $*"
-	fi
-	fn_sleep_time
-	echo -en "\n"
+	#Deactivated
 }
 
 # [ FAIL ]
 fn_print_fail(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${red} FAIL ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${red} FAIL ${default}] $*"
-	fi
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_fail_nl(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${red} FAIL ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${red} FAIL ${default}] $*"
-	fi
-	fn_sleep_time
-	echo -en "\n"
+	#Deactivated
 }
 
 # [ ERROR ]
 fn_print_error(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${red} ERROR ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${red} ERROR ${default}] $*"
-	fi
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_error_nl(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${red} ERROR ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${red} ERROR ${default}] $*"
-	fi
-	fn_sleep_time
-	echo -en "\n"
+	#Deactivated
 }
 
 # [ WARN ]
 fn_print_warn(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${lightyellow} WARN ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${lightyellow} WARN ${default}] $*"
-	fi
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_warn_nl(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${lightyellow} WARN ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${lightyellow} WARN ${default}] $*"
-	fi
-	fn_sleep_time
-	echo -en "\n"
+	#Deactivated
 }
 
 # [ INFO ]
 fn_print_info(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${cyan} INFO ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${cyan} INFO ${default}] $*"
-	fi
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_info_nl(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${cyan} INFO ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${cyan} INFO ${default}] $*"
-	fi
-	fn_sleep_time
-	echo -en "\n"
+	#Deactivated
 }
 
 # [ START ]
 fn_print_start(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${lightgreen} START ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${lightgreen} START ${default}] $*"
-	fi
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_start_nl(){
-	if [ "${commandaction}" ]; then
-		echo -en "${creeol}[${lightgreen} START ${default}] ${commandaction} ${selfname}: $*"
-	else
-		echo -en "${creeol}[${lightgreen} START ${default}] $*"
-	fi
-	fn_sleep_time
-	echo -en "\n"
+	#Deactivated
 }
 
 # On-Screen - Interactive messages
@@ -276,87 +199,57 @@ fn_print_start_nl(){
 # No More Room in Hell Debug
 # =================================
 fn_print_header(){
-	echo -e ""
-	echo -e "${lightyellow}${gamename} ${commandaction}${default}"
-	echo -e "=================================${default}"
+	#Deactivated
 }
 
 # Complete!
 fn_print_complete(){
-	echo -en "${green}Complete!${default} $*"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_complete_nl(){
-	echo -e "${green}Complete!${default} $*"
-	fn_sleep_time
+	#Deactivated
 }
 
 # Failure!
 fn_print_failure(){
-	echo -en "${red}Failure!${default} $*"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_failure_nl(){
-	echo -e "${red}Failure!${default} $*"
-	fn_sleep_time
+	#Deactivated
 }
 
 # Error!
 fn_print_error2(){
-	echo -en "${red}Error!${default} $*"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_error2_nl(){
-	echo -e "${red}Error!${default} $*"
-	fn_sleep_time
+	#Deactivated
 }
 
 # Warning!
 fn_print_warning(){
-	echo -en "${lightyellow}Warning!${default} $*"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_warning_nl(){
-	echo -e "${lightyellow}Warning!${default} $*"
-	fn_sleep_time
+	#Deactivated
 }
 
 # Information!
 fn_print_information(){
-	echo -en "${cyan}Information!${default} $*"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_information_nl(){
-	echo -e "${cyan}Information!${default} $*"
-	fn_sleep_time
+	#Deactivated
 }
 
 # Y/N Prompt
 fn_prompt_yn(){
-	local prompt="$1"
-	local initial="$2"
-
-	if [ "${initial}" == "Y" ]; then
-		prompt+=" [Y/n] "
-	elif [ "${initial}" == "N" ]; then
-		prompt+=" [y/N] "
-	else
-		prompt+=" [y/n] "
-	fi
-
-	while true; do
-		read -e -i "${initial}" -p  "${prompt}" -r yn
-		case "${yn}" in
-			[Yy]|[Yy][Ee][Ss]) return 0 ;;
-			[Nn]|[Nn][Oo]) return 1 ;;
-		*) echo -e "Please answer yes or no." ;;
-		esac
-	done
+	#Deactivated
 }
 
 # Prompt for message
@@ -377,160 +270,132 @@ fn_prompt_message(){
 
 # YES
 fn_print_yes_eol(){
-	echo -en "${cyan}YES${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_yes_eol_nl(){
-	echo -e "${cyan}YES${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # NO
 fn_print_no_eol(){
-	echo -en "${red}NO${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_no_eol_nl(){
-	echo -e "${red}NO${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # OK
 fn_print_ok_eol(){
-	echo -en "${green}OK${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_ok_eol_nl(){
-	echo -e "${green}OK${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # FAIL
 fn_print_fail_eol(){
-	echo -en "${red}FAIL${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_fail_eol_nl(){
-	echo -e "${red}FAIL${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # ERROR
 fn_print_error_eol(){
-	echo -en "${red}ERROR${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_error_eol_nl(){
-	echo -e "${red}ERROR${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # WAIT
 fn_print_wait_eol(){
-	echo -en "${cyan}WAIT${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_wait_eol_nl(){
-	echo -e "${cyan}WAIT${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # WARN
 fn_print_warn_eol(){
-	echo -en "${lightyellow}WARN${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_warn_eol_nl(){
-	echo -e "${lightyellow}WARN${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # INFO
 fn_print_info_eol(){
-	echo -en "${cyan}INFO${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_info_eol_nl(){
-	echo -e "${cyan}INFO${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # QUERYING
 fn_print_querying_eol(){
-	echo -en "${cyan}QUERYING${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_querying_eol_nl(){
-	echo -e "${cyan}QUERYING${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # CHECKING
 fn_print_checking_eol(){
-	echo -en "${cyan}CHECKING${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_checking_eol_nl(){
-	echo -e "${cyan}CHECKING${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # DELAY
 fn_print_delay_eol(){
-	echo -en "${green}DELAY${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_delay_eol_nl(){
-	echo -e "${green}DELAY${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # CANCELED
 fn_print_canceled_eol(){
-	echo -en "${lightyellow}CANCELED${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_canceled_eol_nl(){
-	echo -e "${lightyellow}CANCELED${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # REMOVED
 fn_print_removed_eol(){
-	echo -en "${red}REMOVED${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_removed_eol_nl(){
-	echo -e "${red}REMOVED${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 # UPDATE
 fn_print_update_eol(){
-	echo -en "${cyan}UPDATE${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_update_eol_nl(){
-	echo -e "${cyan}UPDATE${default}"
-	fn_sleep_time
+	#Deactivated
 }
 
 fn_print_ascii_logo(){
-	echo "ASCII art Disabled"
+	#Deactivated
 }
 
 fn_print_restart_warning(){
