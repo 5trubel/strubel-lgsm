@@ -21,8 +21,8 @@ if [ -f ".dev-debug" ]; then
 fi
 
 version="v21.2.3"
-shortname="core"
-gameservername="core"
+shortname="gmod"
+gameservername="gmodserver"
 commandname="CORE"
 rootdir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 selfname=$(basename "$(readlink -f "${BASH_SOURCE[0]}")")

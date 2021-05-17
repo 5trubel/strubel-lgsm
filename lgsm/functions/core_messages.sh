@@ -132,65 +132,65 @@ fn_script_log_update(){
 
 # [ .... ]
 fn_print_dots(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_dots_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # [  OK  ]
 fn_print_ok(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_ok_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # [ FAIL ]
 fn_print_fail(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_fail_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # [ ERROR ]
 fn_print_error(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_error_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # [ WARN ]
 fn_print_warn(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_warn_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # [ INFO ]
 fn_print_info(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_info_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # [ START ]
 fn_print_start(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_start_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # On-Screen - Interactive messages
@@ -199,57 +199,57 @@ fn_print_start_nl(){
 # No More Room in Hell Debug
 # =================================
 fn_print_header(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # Complete!
 fn_print_complete(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_complete_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # Failure!
 fn_print_failure(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_failure_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # Error!
 fn_print_error2(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_error2_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # Warning!
 fn_print_warning(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_warning_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # Information!
 fn_print_information(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_information_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # Y/N Prompt
 fn_prompt_yn(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # Prompt for message
@@ -270,132 +270,132 @@ fn_prompt_message(){
 
 # YES
 fn_print_yes_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_yes_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # NO
 fn_print_no_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_no_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # OK
 fn_print_ok_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_ok_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # FAIL
 fn_print_fail_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_fail_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # ERROR
 fn_print_error_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_error_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # WAIT
 fn_print_wait_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_wait_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # WARN
 fn_print_warn_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_warn_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # INFO
 fn_print_info_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_info_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # QUERYING
 fn_print_querying_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_querying_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # CHECKING
 fn_print_checking_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_checking_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # DELAY
 fn_print_delay_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_delay_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # CANCELED
 fn_print_canceled_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_canceled_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # REMOVED
 fn_print_removed_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_removed_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 # UPDATE
 fn_print_update_eol(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_update_eol_nl(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_ascii_logo(){
-	#Deactivated
+	echo "deactivated"  > dev null 2>&1
 }
 
 fn_print_restart_warning(){

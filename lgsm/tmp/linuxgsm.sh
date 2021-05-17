@@ -161,6 +161,14 @@ fn_bootstrap_fetch_file_github(){
 
 # Installer menu.
 
+fn_print_center() {
+	#Deactivated
+}
+
+fn_print_horizontal(){
+	#Deactivated
+}
+
 # Bash menu.
 fn_install_menu_bash() {
 	local resultvar=$1

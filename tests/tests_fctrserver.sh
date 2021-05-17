@@ -14,12 +14,6 @@
 # https://docs.linuxgsm.com/configuration/linuxgsm-config
 
 # Debugging
-if [ -f ".dev-debug" ]; then
-	exec 5>dev-debug.log
-	BASH_XTRACEFD="5"
-	set -x
-fi
-
 version="v21.2.3"
 shortname="fctr"
 gameservername="fctrserver"
@@ -188,7 +182,6 @@ fn_bootstrap_fetch_file_github(){
 }
 
 # Installer menu.
-
 fn_print_center() {
 	#Deactivated
 }
