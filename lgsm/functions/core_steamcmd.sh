@@ -151,11 +151,9 @@ fn_update_steamcmd_localbuild(){
 
 	# Checks if localbuild variable has been set.
 	if [ -z "${localbuild}" ]||[ "${localbuild}" == "null" ]; then
-		fn_print_fail "Checking local build: ${remotelocation}"
 		fn_script_log_fatal "Checking local build"
 		core_exit.sh
 	else
-		fn_print_ok "Checking local build: ${remotelocation}"
 		fn_script_log_pass "Checking local build"
 	fi
 }
@@ -178,17 +176,14 @@ fn_update_steamcmd_remotebuild(){
 		fn_print_dots "Checking remote build: ${remotelocation}"
 		# Checks if remotebuild variable has been set.
 		if [ -z "${remotebuild}" ]||[ "${remotebuild}" == "null" ]; then
-			fn_print_fail "Checking remote build: ${remotelocation}"
 			fn_script_log_fatal "Checking remote build"
 			core_exit.sh
 		else
-			fn_print_ok "Checking remote build: ${remotelocation}"
 			fn_script_log_pass "Checking remote build"
 		fi
 	else
 		# Checks if remotebuild variable has been set.
 		if [ -z "${remotebuild}" ]||[ "${remotebuild}" == "null" ]; then
-			fn_print_failure "Unable to get remote build"
 			fn_script_log_fatal "Unable to get remote build"
 			core_exit.sh
 		fi
@@ -248,19 +243,6 @@ fn_update_steamcmd_compare(){
 		fi
 		alert.sh
 	else
-		fn_print_ok_nl "Checking for update: ${remotelocation}"
-		echo -en "\n"
-		echo -e "No update available"
-		echo -e "* Local build: ${green}${localbuild}${default}"
-		echo -e "* Remote build: ${green}${remotebuild}${default}"
-		if [ -n "${branch}" ]; then
-			echo -e "* Branch: ${branch}"
-		fi
-		if [ -n "${betapassword}" ]; then
-			echo -e "* Branch password: ${betapassword}"
-		fi
-		echo -e "https://steamdb.info/app/${appid}/"
-		echo -en "\n"
 		fn_script_log_info "No update available"
 		fn_script_log_info "Local build: ${localbuild}"
 		fn_script_log_info "Remote build: ${remotebuild}"
