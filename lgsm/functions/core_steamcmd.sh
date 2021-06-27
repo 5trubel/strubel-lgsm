@@ -7,6 +7,13 @@
 
 functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 
+fn_check_steamcmd_steamapp(){
+	# Check that steamapp directory fixes issue #3481
+	if [ ! -d "${serverfiles}/steamapps" ]; then
+		mkdir -p "${serverfiles}/steamapps"
+	fi
+}
+
 fn_install_steamcmd(){
 	if [ "${shortname}" == "ark" ]&&[ "${installsteamcmd}" == "1" ]; then
 		steamcmddir="${serverfiles}/Engine/Binaries/ThirdParty/SteamCMD/Linux"
