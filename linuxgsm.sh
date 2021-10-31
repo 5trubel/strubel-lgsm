@@ -20,14 +20,13 @@ if [ -f ".dev-debug" ]; then
 	set -x
 fi
 
-version="v21.2.3"
+version="v21.4.1"
 shortname="core"
 gameservername="core"
 commandname="CORE"
 rootdir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 selfname=$(basename "$(readlink -f "${BASH_SOURCE[0]}")")
 sessionname=$(echo "${selfname}" | cut -f1 -d".")
-export globalsession=$(echo "${selfname}" | cut -f1 -d".")
 lgsmdir="${rootdir}/lgsm"
 logdir="${rootdir}/log"
 lgsmlogdir="${logdir}/lgsm"
@@ -62,24 +61,36 @@ core_functions.sh(){
 # Fetches the core functions required before passed off to core_dl.sh.
 fn_bootstrap_fetch_file(){
 	remote_fileurl="${1}"
-	remote_fileurl_name="${2}"
-	local_filedir="${3}"
-	local_filename="${4}"
-	chmodx="${5:-0}"
-	run="${6:-0}"
-	forcedl="${7-0}"
-	md5="${8:-0}"
+	remote_fileurl_backup="${2}"
+	remote_fileurl_name="${3}"
+	remote_fileurl_backup_name="${4}"
+	local_filedir="${5}"
+	local_filename="${6}"
+	chmodx="${7:-0}"
+	run="${8:-0}"
+	forcedl="${9:-0}"
+	md5="${10:-0}"
 	# Download file if missing or download forced.
 	if [ ! -f "${local_filedir}/${local_filename}" ]||[ "${forcedl}" == "forcedl" ]; then
-
-		counter=0
-		remote_fileurls_array=( remote_fileurl )
+		# If backup fileurl exists include it.
+		if [ -n "${remote_fileurl_backup}" ]; then
+			# counter set to 0 to allow second try
+			counter=0
+			remote_fileurls_array=( remote_fileurl remote_fileurl_backup )
+		else
+			# counter set to 1 to not allow second try
+			counter=1
+			remote_fileurls_array=( remote_fileurl )
+		fi
 
 		for remote_fileurl_array in "${remote_fileurls_array[@]}"; do
-			
-			fileurl="${remote_fileurl}"
-			fileurl_name="${remote_fileurl_name}"
-
+			if [ "${remote_fileurl_array}" == "remote_fileurl" ]; then
+				fileurl="${remote_fileurl}"
+				fileurl_name="${remote_fileurl_name}"
+			elif [ "${remote_fileurl_array}" == "remote_fileurl_backup" ]; then
+				fileurl="${remote_fileurl_backup}"
+				fileurl_name="${remote_fileurl_backup_name}"
+			fi
 			counter=$((counter+1))
 			if [ ! -d "${local_filedir}" ]; then
 				mkdir -p "${local_filedir}"
@@ -88,6 +99,7 @@ fn_bootstrap_fetch_file(){
 			trap fn_fetch_trap INT
 			# Larger files show a progress bar.
 
+			echo -en "fetching ${fileurl_name} ${local_filename}...\c"
 			curlcmd=$(curl --connect-timeout 10 -s --fail -L -o "${local_filedir}/${local_filename}" "${fileurl}" 2>&1)
 
 			local exitcode=$?
@@ -117,6 +129,9 @@ fn_bootstrap_fetch_file(){
 					fi
 				fi
 			else
+				echo -en "OK"
+				sleep 0.3
+				echo -en "\033[2K\\r"
 				if [ -f "${lgsmlog}" ]; then
 					fn_script_log_pass "Downloading ${local_filename}"
 				fi
@@ -148,6 +163,7 @@ fn_bootstrap_fetch_file_github(){
 	github_file_url_name="${2}"
 	# If master branch will currently running LinuxGSM version to prevent "version mixing". This is ignored if a fork.
 	remote_fileurl="https://gitlab.gamerparty.eu/kgaab/strubelgsm/-/raw/master/${github_file_url_dir}/${github_file_url_name}"
+	echo remote_fileurl
 	remote_fileurl_name="GitHub"
 	local_filedir="${3}"
 	local_filename="${github_file_url_name}"
@@ -160,6 +176,15 @@ fn_bootstrap_fetch_file_github(){
 }
 
 # Installer menu.
+fn_print_center() {
+	columns=$(tput cols)
+	line="$*"
+	printf "%*s\n" $(( (${#line} + columns) / 2)) "${line}"
+}
+
+fn_print_horizontal(){
+	printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' "="
+}
 
 # Bash menu.
 fn_install_menu_bash() {

@@ -18,7 +18,7 @@ fn_script_log_info "Updating LinuxGSM"
 fn_print_dots "Selecting repo"
 fn_script_log_info "Selecting repo"
 # Select remotereponame
-curl --connect-timeout 10 -IsfL "https://gitlab.gamerparty.eu/kgaab/strubelgsm/-/raw/master/linuxgsm.sh" 1>/dev/null
+curl --connect-timeout 10 -IsfL "https://gitlab.gamerparty.eu/kgaab/strubelgsm/-/raw/master/master/linuxgsm.sh" 1>/dev/null
 if [ $? != "0" ]; then
 	fn_print_fail_nl "Selecting repo: Unable to to access GitHub or Bitbucket repositories"
 	fn_script_log_fatal "Selecting repo: Unable to to access GitHub or Bitbucket repositories"
