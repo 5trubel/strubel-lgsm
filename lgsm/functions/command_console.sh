@@ -39,12 +39,9 @@ if [ "${status}" != "0" ]; then
 	fn_script_log_pass "Console closed"
 else
 	fn_print_error_nl "Server not running"
-	fn_script_log_error "Failed to access: Server not running"
-	if fn_prompt_yn "Do you want to start the server?" Y; then
-		exitbypass=1
-		command_start.sh
-		fn_firstcommand_reset
-	fi
+	exitbypass=1
+	command_start.sh
+	fn_firstcommand_reset
 fi
 
 core_exit.sh

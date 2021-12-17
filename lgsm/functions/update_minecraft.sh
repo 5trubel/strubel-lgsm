@@ -13,7 +13,7 @@ fn_update_minecraft_dl(){
 	# Generate link to server.jar
 	remotebuildurl=$(curl -s "${remotebuildlink}" | jq -r '.downloads.server.url')
 
-	fn_fetch_file "${remotebuildurl}" "" "" "" "${tmpdir}" "minecraft_server.${remotebuild}.jar" "" "norun" "noforce" "nohash"
+	fn_fetch_file "${remotebuildurl}" "" "${tmpdir}" "minecraft_server.${remotebuild}.jar" "" "norun" "noforce" "nohash"
 	echo -e "copying to ${serverfiles}...\c"
 	cp "${tmpdir}/minecraft_server.${remotebuild}.jar" "${serverfiles}/minecraft_server.jar"
 	local exitcode=$?
@@ -82,16 +82,8 @@ fn_update_minecraft_remotebuild(){
 
 fn_update_minecraft_compare(){
 	# Removes dots so if statement can compare version numbers.
-	fn_print_dots "Checking for update: ${remotelocation}"
 	if [ "${localbuild}" != "${remotebuild}" ]||[ "${forceupdate}" == "1" ]; then
-		fn_print_ok_nl "Checking for update: ${remotelocation}"
-		echo -en "\n"
-		echo -e "Update available"
-		echo -e "* Local build: ${red}${localbuild}${default}"
-		echo -e "* Remote build: ${green}${remotebuild}${default}"
-		if [ -n "${branch}" ]; then
-			echo -e "* Branch: ${branch}"
-		fi
+
 		echo -en "\n"
 		fn_script_log_info "Update available"
 		fn_script_log_info "Local build: ${localbuild}"
@@ -129,11 +121,6 @@ fn_update_minecraft_compare(){
 		alert="update"
 		alert.sh
 	else
-		fn_print_ok_nl "Checking for update: ${remotelocation}"
-		echo -en "\n"
-		echo -e "No update available"
-		echo -e "* Local build: ${green}${localbuild}${default}"
-		echo -e "* Remote build: ${green}${remotebuild}${default}"
 		if [ -n "${branch}" ]; then
 			echo -e "* Branch: ${branch}"
 		fi
@@ -154,9 +141,6 @@ if [ "${firstcommandname}" == "INSTALL" ]; then
 	fn_update_minecraft_remotebuild
 	fn_update_minecraft_dl
 else
-	fn_print_dots "Checking for update"
-	fn_print_dots "Checking for update: ${remotelocation}"
-	fn_script_log_info "Checking for update: ${remotelocation}"
 	fn_update_minecraft_localbuild
 	fn_update_minecraft_remotebuild
 	fn_update_minecraft_compare

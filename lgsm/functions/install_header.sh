@@ -8,7 +8,6 @@
 functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 clear
-fn_print_ascii_logo
 fn_sleep_time
 
 fn_sleep_time
