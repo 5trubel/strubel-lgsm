@@ -5,7 +5,4 @@ sync-with-github:
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git config --global user.email "${GITLAB_USER_EMAIL}"
   script:
-    - git remote add github $REMOTE_REPOSITORY_URL
-    - git checkout master
-    - git pull origin master
     - git push https://$UNAME:$PASSWD@github.com/wangchucheng/git-repo-sync.git HEAD:master
