@@ -10,7 +10,6 @@ sync-with-github:
     - cd ../
     - mkdir new && cd new
     - pwd 
-    - exit 1
     - git init
     - git pull https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git
     - rync -avP ../old/ ./
