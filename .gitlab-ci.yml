@@ -5,5 +5,8 @@ sync-with-github:
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git config --global user.email "${GITLAB_USER_EMAIL}"
   script:
-    - git branch -M main
+    - rm -rf .git
+    - git init
+    - git add *
+    - git commit "Synced with GitLab"
     - git push https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git main
