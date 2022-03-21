@@ -5,6 +5,7 @@ sync-with-github:
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git config --global user.email "${GITLAB_USER_EMAIL}"
   script:
+    - echo $(git log -1 --pretty=%B)
     - rm -rf .git
     - mkdir old/ && cd old && mv ../* ./ && exit 0
     - cd ../
