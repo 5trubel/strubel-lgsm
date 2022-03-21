@@ -8,7 +8,7 @@ sync-with-github:
     - rm -rf .git
     - mkdir old/ && cd old && mv ../* ./ && cd ../ && mkdir new && cd new
     - git init
-    - git remote add https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git origin
+    - git remote add origin https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git
     - git pull
     - rync -avP ../old/ ./
     - git add *
