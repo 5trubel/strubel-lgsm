@@ -4,8 +4,8 @@ sync-with-github:
   before_script:
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git config --global user.email "${GITLAB_USER_EMAIL}"
+    - COMMIT=$(git log -1 --pretty=%B)
   script:
-    - echo $(git log -1 --pretty=%B)
     - rm -rf .git
     - mkdir old/ && cd old && mv ../* ./ && exit 0
     - cd ../
@@ -15,5 +15,5 @@ sync-with-github:
     - git pull https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git
     - rsync -avP ../old/ ./
     - git add *
-    - git commit -m "Synced with GitLab"
+    - git commit -m $COMMIT
     - git push --quiet --set-upstream https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git master
