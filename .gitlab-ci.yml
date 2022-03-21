@@ -9,8 +9,7 @@ sync-with-github:
     - mkdir old/ && cd old && mv ../* ./ && cd ../ && mkdir new && cd new
     - git init
     - git remote add origin https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git
-    - git checkout master
-    - git pull
+    - git pull master
     - rync -avP ../old/ ./
     - git add *
     - git commit -m "Synced with GitLab"
