@@ -12,7 +12,7 @@ sync-with-github:
     - pwd 
     - git init
     - git pull https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git
-    - rync -avP ../old/ ./
+    - rsync -avP ../old/ ./
     - git add *
     - git commit -m "Synced with GitLab"
     - git push --set-upstream https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git master
