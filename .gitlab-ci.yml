@@ -9,4 +9,4 @@ sync-with-github:
     - git init
     - git add *
     - git commit -m "Synced with GitLab"
-    - git push --set-upstream https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git
+    - git push --set-upstream https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git main
