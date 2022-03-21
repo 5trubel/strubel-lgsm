@@ -15,5 +15,5 @@ sync-with-github:
     - git pull https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git
     - rsync -avP ../old/ ./
     - git add *
-    - git commit -m $COMMIT
+    - git commit -m "$COMMIT"
     - git push --quiet --set-upstream https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git master
