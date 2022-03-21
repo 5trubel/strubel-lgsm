@@ -1,19 +1,9 @@
-name: GitlabSync
-
-on:
-  - push
-  - delete
-
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    name: Git Repo Sync
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - uses: wangchucheng/git-repo-sync@v0.1.0
-      with:
-        target-url: ${{ secrets.TARGET_URL }}
-        target-username: ${{ secrets.TARGET_USERNAME }}
-        target-token: ${{ secrets.TARGET_TOKEN }}
+sync-with-github:
+  before_script:
+    - git config --global user.name "${GITLAB_USER_NAME}"
+    - git config --global user.email "${GITLAB_USER_EMAIL}"
+  script:
+    - git remote add github $REMOTE_REPOSITORY_URL
+    - git checkout master
+    - git pull origin master
+    - git push https://$UNAME:$PASSWD@github.com/wangchucheng/git-repo-sync.git HEAD:master
