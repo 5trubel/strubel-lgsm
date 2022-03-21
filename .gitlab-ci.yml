@@ -5,4 +5,4 @@ sync-with-github:
     - git config --global user.name "${GITLAB_USER_NAME}"
     - git config --global user.email "${GITLAB_USER_EMAIL}"
   script:
-    - git push https://$UNAME:$PASSWD@github.com/wangchucheng/git-repo-sync.git HEAD:master
+    - git push https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git HEAD:master
