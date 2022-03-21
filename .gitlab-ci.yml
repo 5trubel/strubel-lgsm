@@ -8,5 +8,5 @@ sync-with-github:
     - rm -rf .git
     - git init
     - git add *
-    - git commit "Synced with GitLab"
+    - git commit -m "Synced with GitLab"
     - git push https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git main
