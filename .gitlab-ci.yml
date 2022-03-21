@@ -6,7 +6,8 @@ sync-with-github:
     - git config --global user.email "${GITLAB_USER_EMAIL}"
   script:
     - rm -rf .git
-    - mkdir old/ && cd old && mv ../* ./ && cd ../
+    - mkdir old/ && cd old && mv ../* ./
+    - cd ../
     - mkdir new && cd new
     - pwd 
     - exit 1
