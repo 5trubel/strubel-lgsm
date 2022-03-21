@@ -14,7 +14,7 @@
 # https://docs.linuxgsm.com/configuration/linuxgsm-config
 
 # Debugging
-version="v21.2.3"
+version="v21-StrubelDocker"
 shortname="fctr"
 gameservername="fctrserver"
 commandname="CORE"

@@ -62,7 +62,7 @@ fn_default_config_local(){
 fn_set_config_vars(){
 	if [ -f "${servercfgfullpath}" ]; then
 		random=$(tr -dc A-Za-z0-9_ < /dev/urandom | head -c 8 | xargs)
-		servername="LinuxGSM"
+		servername="GamerParty-Docker"
 		rconpass="admin${random}"
 		echo -e "changing hostname."
 		fn_script_log_info "changing hostname."
