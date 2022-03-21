@@ -15,4 +15,4 @@ sync-with-github:
     - rsync -avP ../old/ ./
     - git add *
     - git commit -m "Synced with GitLab"
-    - git push --set-upstream https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git master
+    - git push --quiet --set-upstream https://$UNAME:$PASSWD@github.com/5trubel/strubel-lgsm.git master
