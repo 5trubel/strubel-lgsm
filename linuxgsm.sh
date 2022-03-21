@@ -1,6 +1,6 @@
 #!/bin/bash
 # Project: Linux Game Server Managers - LinuxGSM
-# Author: Daniel Gibbs
+# Author: Daniel Gibbs - Modified by Strub3l 
 # License: MIT License, Copyright (c) 2020 Daniel Gibbs
 # Purpose: Linux Game Server Management Script
 # Contributors: https://linuxgsm.com/contrib
